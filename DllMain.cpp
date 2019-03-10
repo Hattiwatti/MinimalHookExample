@@ -12,26 +12,6 @@ struct SomeStruct
   int someValue;
 };
 
-class EvenFancierClass
-{
-public:
-  virtual void Function1(); // Probably some really cool virtual function that might do cool stuff if we somehow managed to call it
-
-  float m_secretVariableThatProbablyDoesSomethingReallyCool;
-};
-
-class AFancyClass
-{
-public:
-  EvenFancierClass* m_fancierPointer;
-
-  static AFancyClass* Singleton()
-  {
-    // If we have figured out a static pointer to a fancy class, we can cast the address as a pointer of a pointer (**) and then dereference it once (* at the start)
-    return *(AFancyClass**)(0x123123);
-  }
-};
-
 // A type definition for a function so tFunction can be used to describe pointers to functions like this
 // __fastcall is a calling convention that can be used for almost any function in 64-bit Windows processes
 typedef void(__fastcall* tFunction)(int a1, int a2, SomeStruct* a3, __int64 a4, __int64 a5);
@@ -112,16 +92,6 @@ void main()
     {
       // exit
       break;
-    }
-
-    if (GetAsyncKeyState(VK_INSERT) & 0x8000)
-    {
-      AFancyClass* fancyClass = AFancyClass::Singleton();
-
-      EvenFancierClass* fancierClass = fancyClass->m_fancierPointer;
-      fancierClass->Function1();
-
-      fancierClass->m_secretVariableThatProbablyDoesSomethingReallyCool = 10000000000.f;
     }
 
     Sleep(1);
