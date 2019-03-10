@@ -46,7 +46,7 @@ float __fastcall hookFieldOfView()
   float result = origFieldOfView();
 
   if (changeStuff)
-    return 25.f; // very cinematic fov
+    return ourCustomFov ; // very cinematic fov
 
   return result;
 }
